@@ -30,12 +30,13 @@ class Todolist extends Component {
         return (
             <Fragment>
                 <div>
-                    <input className="input" onChange={this.handleInputChange} value={this.state.inputValue}/>
+                    <label htmlFor="gg">输入内容</label>
+                    <input id="gg" className="input" onChange={this.handleInputChange} value={this.state.inputValue}/>
                     <button onClick={this.onSubmit}>提交</button>
                 </div> 
                 <ul>
                     {this.state.list.map((item,index)=>{
-                        return <li onClick={()=>{this.handleDelete(index)}} key={item} >{item}</li>
+                        return <li dangerouslySetInnerHTML={{__html:item}} onClick={()=>{this.handleDelete(index)}} key={item} ></li>
                     })}
                 </ul>
             </Fragment>
