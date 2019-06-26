@@ -9,20 +9,45 @@ class Todolist extends Component {
     constructor (props){
         super(props);
         this.state=store.getState();
+        this.handleInputChange=this.handleInputChange.bind(this);
+        this.handleStoreChange=this.handleStoreChange.bind(this);
+        this.handleBtnClick=this.handleBtnClick.bind(this);
+        store.subscribe(this.handleStoreChange);
+    }
+    //派发aciton的函数
+    handleInputChange(e){
+        const action={
+            type:"change_input_value",
+            value:e.target.value
+        }
+        store.dispatch(action);
+    }
+    //派发增加todolist的action
+    handleBtnClick(){
+        const action={
+            type:"add_todo_item"
+        }
+        store.dispatch(action)
+    }
+    //监听store内数据变化的时候
+    handleStoreChange(){
+        this.setState(store.getState());
     }
     render() { 
-       
-        const data = [
-            'Racing car sprays burning fuel into crowd.',
-            'Japanese princess to wed commoner.',
-            'Australian walks 100km after outback crash.',
-            'Man charged over missing wedding girl.',
-            'Los Angeles battles huge wildfires.',
-          ];
         return ( 
             <div style={{marginTop:"10px"}}>
-                <Input placeholder={this.state.inputValue} style={{width:"300px"}}/>
-                <Button type="primary" style={{marginLeft:"10px"}}>提 交</Button>  
+                <Input 
+                    placeholder={this.state.inputValue} 
+                    style={{width:"300px"}}
+                    value={this.state.inputValue}
+                    onChange={this.handleInputChange}
+                />
+                <Button 
+                    type="primary" 
+                    style={{marginLeft:"10px"}}
+                    onClick={this.handleBtnClick}
+                >提 交
+                </Button>  
                 <List
                 style={{marginTop:"10px",width:"300px"}}
                 bordered
@@ -33,8 +58,7 @@ class Todolist extends Component {
                     </List.Item>
                 )}
                 />
-            </div>
-      
+            </div>    
          );
     }
 }
