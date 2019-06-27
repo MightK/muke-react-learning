@@ -5,7 +5,7 @@ import { Input } from 'antd';
 import { Button } from 'antd';
 import { List} from 'antd';
 import store from "./store";
-import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,HANDLE_DELETE_ITEM} from "./store/actionTypes";
+import  {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,HANDLE_DELETE_ITEM} from "./store/actionTypes";
 class Todolist extends Component {
     constructor (props){
         super(props);
