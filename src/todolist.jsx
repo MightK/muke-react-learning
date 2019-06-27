@@ -5,7 +5,7 @@ import { Input } from 'antd';
 import { Button } from 'antd';
 import { List} from 'antd';
 import store from "./store";
-import  {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,HANDLE_DELETE_ITEM} from "./store/actionTypes";
+import * as actions from "./store/actionCreator";
 class Todolist extends Component {
     constructor (props){
         super(props);
@@ -18,25 +18,17 @@ class Todolist extends Component {
     }
     //派发aciton的函数
     handleInputChange(e){
-        const action={
-            type:CHANGE_INPUT_VALUE,
-            value:e.target.value
-        }
+        const action=actions.handleInputChangeAction(e.target.value);
         store.dispatch(action);
     }
     //派发增加todolist的action
     handleBtnClick(){
-        const action={
-            type:ADD_TODO_ITEM
-        }
-        store.dispatch(action)
+        const action=actions.handleBtnClickAction();
+        store.dispatch(action);
     }
     //派发删除item项的action
     handleDeleteItem(index){
-        const action={
-            type:HANDLE_DELETE_ITEM,
-            index //索引
-        }
+        const action=actions.handleDeleteItemAction();
         store.dispatch(action);
     }
     //监听store内数据变化的时候
