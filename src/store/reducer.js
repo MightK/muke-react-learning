@@ -1,4 +1,4 @@
-import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,HANDLE_DELETE_ITEM} from "./actionTypes";
+import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,HANDLE_DELETE_ITEM,GET_INIT_STATE} from "./actionTypes";
 const defaultState={
  inputValue:"iverson",
  list:[ 
@@ -27,6 +27,11 @@ export default (state=defaultState,action)=>{
         newState.list.splice(action.index,1);
         return newState;
     } 
+    if(action.type===GET_INIT_STATE){
+        const newState=JSON.parse(JSON.stringify(state));
+        newState.list=action.data;
+        return newState;
+    }
     console.log(action);
     return state;
 }

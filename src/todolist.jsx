@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 import store from "./store";
 import * as actions from "./store/actionCreator";
 import TodoListUi from "./todolistUI";
+import axios from "axios";
 class Todolist extends Component {
     constructor (props){
         super(props);
@@ -13,6 +14,14 @@ class Todolist extends Component {
         this.handleBtnClick=this.handleBtnClick.bind(this);
         this.handleDeleteItem=this.handleDeleteItem.bind(this);
         store.subscribe(this.handleStoreChange);
+    }
+    //生命周期函数
+    componentDidMount(){
+        axios.get("./api/list.json").then((res)=>{
+            const data=res.data;
+            const action=actions.getInitStateAction(data);
+            store.dispatch(action);
+        })
     }
     //派发aciton的函数
     handleInputChange(e){

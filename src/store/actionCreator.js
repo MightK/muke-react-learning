@@ -1,4 +1,4 @@
-import  {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,HANDLE_DELETE_ITEM} from "./actionTypes";
+import  {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,HANDLE_DELETE_ITEM,GET_INIT_STATE} from "./actionTypes";
 
 export const handleInputChangeAction=(value)=>{
     return{
@@ -17,3 +17,10 @@ export const handleDeleteItemAction=(index)=>{
         index
     }
 }
+export const getInitStateAction=(data)=>{
+    return{
+        type:GET_INIT_STATE,
+        data
+    }
+}
+
