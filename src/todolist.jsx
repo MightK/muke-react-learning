@@ -17,11 +17,13 @@ class Todolist extends Component {
     }
     //生命周期函数
     componentDidMount(){
-        axios.get("./api/list.json").then((res)=>{
-            const data=res.data;
-            const action=actions.getInitStateAction(data);
-            store.dispatch(action);
-        })
+        // axios.get("./api/list.json").then((res)=>{
+        //     const data=res.data;
+        //     const action=actions.getInitStateAction(data);
+        //     store.dispatch(action);
+        // })
+        const action=actions.getDataAction();
+        store.dispatch(action);
     }
     //派发aciton的函数
     handleInputChange(e){

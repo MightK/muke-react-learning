@@ -1,5 +1,5 @@
 import  {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,HANDLE_DELETE_ITEM,GET_INIT_STATE} from "./actionTypes";
-
+import axios from "axios";
 export const handleInputChangeAction=(value)=>{
     return{
         type:CHANGE_INPUT_VALUE,
@@ -21,6 +21,11 @@ export const getInitStateAction=(data)=>{
     return{
         type:GET_INIT_STATE,
         data
+    }
+}
+export const getDataAction=()=>{
+    return (dispatch)=>{
+
     }
 }
 
