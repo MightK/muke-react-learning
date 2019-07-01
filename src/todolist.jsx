@@ -22,9 +22,10 @@ class Todolist extends Component {
         //     const action=actions.getInitStateAction(data);
         //     store.dispatch(action);
         // })
-        const action=actions.getDataAction();
+        const action=actions.getSagaAction();
         store.dispatch(action);
     }
+    
     //派发aciton的函数
     handleInputChange(e){
         const action=actions.handleInputChangeAction(e.target.value);
@@ -56,5 +57,4 @@ class Todolist extends Component {
             )
     }
 }
- 
 export default Todolist;

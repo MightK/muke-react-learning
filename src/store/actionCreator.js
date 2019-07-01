@@ -1,4 +1,4 @@
-import  {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,HANDLE_DELETE_ITEM,GET_INIT_STATE} from "./actionTypes";
+import  {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,HANDLE_DELETE_ITEM,GET_INIT_STATE,GET_SAGA} from "./actionTypes";
 import axios from "axios";
 export const handleInputChangeAction=(value)=>{
     return{
@@ -25,7 +25,16 @@ export const getInitStateAction=(data)=>{
 }
 export const getDataAction=()=>{
     return (dispatch)=>{
-
+        axios.get("./api/list.json").then((res)=>{
+            const data=res.data;
+            const action=getInitStateAction(data);
+            dispatch(action);
+        })
+    }
+}
+export const getSagaAction=()=>{
+    return {
+        type:GET_SAGA,
     }
 }
 
