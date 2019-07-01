@@ -1,4 +1,4 @@
-import  {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,HANDLE_DELETE_ITEM,GET_INIT_STATE,GET_SAGA} from "./actionTypes";
+import  {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,HANDLE_DELETE_ITEM,GET_INIT_STATE,GET_SAGA,GET_OBSERVABLE} from "./actionTypes";
 import axios from "axios";
 export const handleInputChangeAction=(value)=>{
     return{
@@ -35,6 +35,11 @@ export const getDataAction=()=>{
 export const getSagaAction=()=>{
     return {
         type:GET_SAGA,
+    }
+}
+export const getObesrvable=()=>{
+    return {
+        type:GET_OBSERVABLE,
     }
 }
 
